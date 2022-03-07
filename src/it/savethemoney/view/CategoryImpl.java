@@ -3,6 +3,7 @@ package it.savethemoney.view;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 import it.savethemoney.model.AbstractData;
 import it.savethemoney.model.Category;
@@ -36,5 +37,24 @@ public class CategoryImpl extends AbstractData implements Category {
 	public void modifyData(String newName) {
 		super.modifyData(newName);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(expenseList);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CategoryImpl other = (CategoryImpl) obj;
+		return Objects.equals(expenseList, other.expenseList);
+	}
+	
+	
 
 }
