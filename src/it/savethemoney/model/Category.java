@@ -10,7 +10,7 @@ public interface Category {
 	 */
 	List<Expense> expenseCategory(); 
 	
-	void addExpense(Expense e); //genera eccezioni
+	void addExpense(Expense e);
 	
-	void removeExpense(Expense e); // genera eccezioni
+	void removeExpense(Expense e) throws NullPointerException;
 }

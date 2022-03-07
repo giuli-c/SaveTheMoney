@@ -13,4 +13,5 @@ public interface Expense {
 	 * @return the quantity for every expense
 	 */
 	double getQuantity();
+
 }

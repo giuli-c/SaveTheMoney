@@ -29,8 +29,10 @@ public class CategoryImpl extends AbstractData implements Category {
 	}
 
 	@Override
-	public void removeExpense(Expense e) {
-		this.expenseList.remove(e);
+	public void removeExpense(Expense e) throws NullPointerException {
+		if(!this.expenseList.remove(e))
+			throw new NullPointerException("ATTENZIONE! La spesa che vuoi rimuovere non esiste!");
+		
 	}
 	
 	@Override
@@ -40,7 +42,7 @@ public class CategoryImpl extends AbstractData implements Category {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(expenseList);
+		return Objects.hash(getName());
 	}
 
 	@Override
@@ -52,7 +54,7 @@ public class CategoryImpl extends AbstractData implements Category {
 		if (getClass() != obj.getClass())
 			return false;
 		CategoryImpl other = (CategoryImpl) obj;
-		return Objects.equals(expenseList, other.expenseList);
+		return this.getName() == other.getName();
 	}
 	
 	

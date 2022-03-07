@@ -1,5 +1,7 @@
 package it.savethemoney.implementation;
 
+import java.util.Objects;
+
 import it.savethemoney.model.AbstractData;
 import it.savethemoney.model.Objectives;
 
@@ -14,13 +16,19 @@ public class ObjectivesImpl extends AbstractData implements Objectives {
 	}
 
 	@Override
-	public void deposit(final double amount) {	// final perchè non andrò a modificare la variabile amount da depositare
-		this.paidAmount += amount;	
+	public void deposit(final double amount) throws IllegalArgumentException {	// final perchè non andrò a modificare la variabile amount da depositare
+		if(amount < 0 || amount + this.paidAmount > goalAmount)
+			throw new IllegalArgumentException("ATTENZIONE! Non puoi inserire l'importo di € " + amount);
+	
+		this.paidAmount += amount;
 	}
 
 	@Override
-	public void withdraw(final double amount) {
-		this.paidAmount -= amount;
+	public void withdraw(final double amount) throws IllegalArgumentException {
+		if(amount > paidAmount)
+			throw new IllegalArgumentException("ATTENZIONE! Non puoi ritirare l'importo di € " + amount);
+		
+		this.paidAmount -= amount;	
 	}
 
 	@Override
@@ -38,4 +46,22 @@ public class ObjectivesImpl extends AbstractData implements Objectives {
 		this.goalAmount = newAmount;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(getName());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ObjectivesImpl other = (ObjectivesImpl) obj;
+		return this.getName() == other.getName();
+	}
+
+	
 }
