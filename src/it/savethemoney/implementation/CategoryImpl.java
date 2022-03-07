@@ -1,4 +1,4 @@
-package it.savethemoney.view;
+package it.savethemoney.implementation;
 
 import java.util.Collections;
 import java.util.LinkedList;

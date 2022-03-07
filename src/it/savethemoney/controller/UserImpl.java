@@ -3,12 +3,12 @@ package it.savethemoney.controller;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import it.savethemoney.implementation.CategoryImpl;
+import it.savethemoney.implementation.ExpenseImpl;
+import it.savethemoney.implementation.ObjectivesImpl;
 import it.savethemoney.model.Category;
 import it.savethemoney.model.Expense;
 import it.savethemoney.model.Objectives;
-import it.savethemoney.view.CategoryImpl;
-import it.savethemoney.view.ExpenseImpl;
-import it.savethemoney.view.ObjectivesImpl;
 
 public class UserImpl implements User {
 
