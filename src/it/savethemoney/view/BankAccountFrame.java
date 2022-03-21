@@ -18,7 +18,7 @@ public class BankAccountFrame extends JFrame{
 	
 	public BankAccountFrame(String name, String namePerson, double totalBalance) {
 		super(name);
-		setSize(400, 800);
+		setSize(400, 600);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);				// dove si apre l'interfaccia (al centro)
@@ -28,8 +28,8 @@ public class BankAccountFrame extends JFrame{
 		this.labelPanel 	= new BankAccountLabelPanel(namePerson, totalBalance);
 		this.buttonPanel 	= new BankAccountButtonPanel();
 		
-		add(labelPanel, BorderLayout.PAGE_START);
-		add(buttonPanel, BorderLayout.CENTER);
+		this.add(labelPanel, BorderLayout.PAGE_START);
+		this.add(buttonPanel, BorderLayout.CENTER);
 		
 		setVisible(true);
 	}

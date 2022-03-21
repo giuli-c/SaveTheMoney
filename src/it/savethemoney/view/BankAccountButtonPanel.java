@@ -1,11 +1,10 @@
 package it.savethemoney.view;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 public class BankAccountButtonPanel extends JPanel{
 
@@ -25,7 +24,8 @@ public class BankAccountButtonPanel extends JPanel{
 		this.paymentsButton 	= new PaymentsButton("SERVICE PAYMENTS");
 		this.savingsPlanButton 	= new SavingButton("SAVING PLAN");
 		
-		setLayout(new GridLayout(2,2,50, 50));
+		setBorder(BorderFactory.createEmptyBorder(20,20,20,20)); 
+		setLayout(new GridLayout(2, 2, 20, 50));
 		
 		add(depositButton);
 		add(expenseButton);
