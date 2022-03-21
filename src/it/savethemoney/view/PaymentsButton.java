@@ -16,6 +16,6 @@ public class PaymentsButton extends JButton{
 		super(name);
 		
 		setPreferredSize(new Dimension(0, 40));
-		setFont(new Font("Cambria", Font.BOLD, 20));
+		setFont(new Font("Cambria", Font.BOLD, 18));
 	}
 }

@@ -20,9 +20,9 @@ public class BankAccountButtonPanel extends JPanel{
 	
 	public BankAccountButtonPanel() {
 		this.depositButton 		= new DepositButton("DEPOSIT");
-		this.expenseButton 		= new ExpenseButton("EXPENSE MANAGEMENT");
-		this.paymentsButton 	= new PaymentsButton("SERVICE PAYMENTS");
-		this.savingsPlanButton 	= new SavingButton("SAVING PLAN");
+		this.expenseButton 		= new ExpenseButton("EXPENSE\n " + "MANAGEMENT");
+		this.paymentsButton 	= new PaymentsButton("SERVICE\n PAYMENTS");
+		this.savingsPlanButton 	= new SavingButton("SAVING\n PLAN");
 		
 		setBorder(BorderFactory.createEmptyBorder(20,20,20,20)); 
 		setLayout(new GridLayout(2, 2, 20, 50));
