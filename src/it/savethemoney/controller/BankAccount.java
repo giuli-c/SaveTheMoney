@@ -5,7 +5,7 @@ import it.savethemoney.model.Category;
 import it.savethemoney.model.Expense;
 import it.savethemoney.model.Objectives;
 
-public interface User {
+public interface BankAccount {
 	
 	void newObjective(String name, int amount) throws PresentElementException; //genera eccezione
 	
@@ -39,4 +39,6 @@ public interface User {
 	void viewExpenses();
 	
 	void viewCategories();
+	
+	void viewTransaction();
 }

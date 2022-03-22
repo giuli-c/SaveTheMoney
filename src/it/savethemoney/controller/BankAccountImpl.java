@@ -11,12 +11,12 @@ import it.savethemoney.model.Category;
 import it.savethemoney.model.Expense;
 import it.savethemoney.model.Objectives;
 
-public class UserImpl implements User {
+public class BankAccountImpl implements BankAccount {
 
 	private Set<Objectives> objectivesSet;
 	private Set<Category> categorySet;
 	
-	public UserImpl() {
+	public BankAccountImpl() {
 		this.objectivesSet 	= new LinkedHashSet<>();
 		this.categorySet 	= new LinkedHashSet<>();
 	}
@@ -78,6 +78,12 @@ public class UserImpl implements User {
 	public void viewCategories() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void viewTransaction() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

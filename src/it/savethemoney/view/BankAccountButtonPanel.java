@@ -21,7 +21,7 @@ public class BankAccountButtonPanel extends JPanel{
 	public BankAccountButtonPanel() {
 		this.depositButton 		= new DepositButton("DEPOSIT");
 		this.expenseButton 		= new ExpenseButton("<html>EXPENSE<br /> MANAGEMENT</html>");
-		this.paymentsButton 	= new PaymentsButton("<html>SERVICE<br /> PAYMENTS</html>");
+		this.paymentsButton 	= new PaymentsButton("<html>PAYMENT<br /> SERVICES</html>");
 		this.savingsPlanButton 	= new SavingButton("<html>SAVING<br /> PLAIN<html>");
 		
 		setBorder(BorderFactory.createEmptyBorder(20,20,20,20)); 
