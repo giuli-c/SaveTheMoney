@@ -82,8 +82,7 @@ public class BankAccountImpl implements BankAccount {
 
 	@Override
 	public void viewTransaction() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stu		
 	}
 
 }
