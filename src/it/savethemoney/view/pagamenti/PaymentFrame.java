@@ -1,4 +1,4 @@
-package it.savethemoney.view.spese;
+package it.savethemoney.view.pagamenti;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,7 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ExpenseFrame extends JFrame {
+import it.savethemoney.view.spese.CategoryButton;
+import it.savethemoney.view.spese.ExpenseButtonPanel;
+import it.savethemoney.view.spese.ExpenseLabel;
+
+public class PaymentFrame extends JFrame{
 
 	/**
 	 * 
@@ -19,11 +23,11 @@ public class ExpenseFrame extends JFrame {
 	private JPanel buttonPanel;
 	private JButton addCategory;
 	
-	public ExpenseFrame(String name) {
+	public PaymentFrame(String name) {
 		super(name);
 		
 		setSize(300, 450);
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);				// dove si apre l'interfaccia (al centro)
 		getContentPane().setBackground(Color.WHITE);
@@ -39,4 +43,6 @@ public class ExpenseFrame extends JFrame {
 		
 		setVisible(true);
 	}
+}
+
 }

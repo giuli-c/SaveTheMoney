@@ -20,8 +20,8 @@ public class DepositFrame extends JFrame{
 	
 	public DepositFrame(String name) {
 		super(name);
-		setSize(400, 500);
-		setResizable(false);
+		setSize(200, 100);
+		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);				// dove si apre l'interfaccia (al centro)
 		getContentPane().setBackground(Color.WHITE);
