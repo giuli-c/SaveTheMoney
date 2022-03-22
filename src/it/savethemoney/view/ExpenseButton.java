@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class ExpenseButton extends JButton{
 	/**
@@ -16,5 +17,6 @@ public class ExpenseButton extends JButton{
 		
 		setPreferredSize(new Dimension(0, 40));
 		setFont(new Font("Cambria", Font.BOLD, 18));
+		setHorizontalTextPosition(SwingConstants.CENTER);
 	}
 }

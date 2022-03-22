@@ -1,5 +1,6 @@
 package it.savethemoney.view;
 
+import it.savethemoney.view.pagamenti.PaymentFrame;
 import it.savethemoney.view.risparmio.DepositFrame;
 import it.savethemoney.view.spese.ExpenseFrame;
 
@@ -9,5 +10,6 @@ public class Main {
 		new BankAccountFrame("BankAccount", "Giulia..", 10000);
 		new DepositFrame("Deposite");
 		new ExpenseFrame("Expense Management");
+		new PaymentFrame("Payment Service");
 	}
 }
