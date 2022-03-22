@@ -1,5 +1,11 @@
 package it.savethemoney.model;
 
-public interface User {
+import it.savethemoney.controller.BankAccount;
 
+public interface User {
+	
+	String getName();
+
+	BankAccount getAccount();
+	
 }

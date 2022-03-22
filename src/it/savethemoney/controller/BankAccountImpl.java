@@ -3,10 +3,12 @@ package it.savethemoney.controller;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import it.savethemoney.implementation.AccountBalanceImpl;
 import it.savethemoney.implementation.CategoryImpl;
 import it.savethemoney.implementation.ExpenseImpl;
 import it.savethemoney.implementation.ObjectivesImpl;
 import it.savethemoney.implementation.PresentElementException;
+import it.savethemoney.model.AccountBalance;
 import it.savethemoney.model.Category;
 import it.savethemoney.model.Expense;
 import it.savethemoney.model.Objectives;
@@ -15,10 +17,12 @@ public class BankAccountImpl implements BankAccount {
 
 	private Set<Objectives> objectivesSet;
 	private Set<Category> categorySet;
+	private AccountBalance accountBalance;
 	
-	public BankAccountImpl() {
+	public BankAccountImpl(double balance) {
 		this.objectivesSet 	= new LinkedHashSet<>();
 		this.categorySet 	= new LinkedHashSet<>();
+		this.accountBalance = new AccountBalanceImpl(balance);
 	}
 	
 	@Override
