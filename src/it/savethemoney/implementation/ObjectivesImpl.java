@@ -3,32 +3,34 @@ package it.savethemoney.implementation;
 import java.util.Objects;
 
 import it.savethemoney.model.AbstractData;
+import it.savethemoney.model.AccountBalance;
 import it.savethemoney.model.Objectives;
+import it.savethemoney.model.Services;
 
 public class ObjectivesImpl extends AbstractData implements Objectives {
 	
-	private double goalAmount;
-	private double paidAmount;
-
+	private Services paymentServices;
+	private AccountBalance objectiveAccount;
+	private double goalAmount;					// importo da raggiungere
+	
 	public ObjectivesImpl(final String nameData, final double amount) {
 		super(nameData);
-		this.goalAmount = amount;
+		this.goalAmount 	  = amount;
+		this.objectiveAccount = new AccountBalanceImpl(0);
+		this.paymentServices  = new ServicesImpl(this.objectiveAccount);
 	}
 
 	@Override
 	public void deposit(final double amount) throws IllegalArgumentException {	// final perchè non andrò a modificare la variabile amount da depositare
-		if(amount < 0 || amount + this.paidAmount > goalAmount)
+		if(amount + this.objectiveAccount.getBalance() > this.goalAmount)
 			throw new IllegalArgumentException("ATTENZIONE! Non puoi inserire l'importo di € " + amount);
 	
-		this.paidAmount += amount;
+		this.paymentServices.deposit(amount);
 	}
 
 	@Override
 	public void withdraw(final double amount) throws IllegalArgumentException {
-		if(amount > paidAmount)
-			throw new IllegalArgumentException("ATTENZIONE! Non puoi ritirare l'importo di € " + amount);
-		
-		this.paidAmount -= amount;	
+		this.paymentServices.payWithdraw(amount);
 	}
 
 	@Override
@@ -38,7 +40,7 @@ public class ObjectivesImpl extends AbstractData implements Objectives {
 
 	@Override
 	public double getPaidAmount() {
-		return this.paidAmount;
+		return this.objectiveAccount.getBalance();
 	}
 
 	public void modifyData(String newName, double newAmount) {

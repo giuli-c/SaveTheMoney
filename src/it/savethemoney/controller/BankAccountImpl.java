@@ -1,6 +1,8 @@
 package it.savethemoney.controller;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import it.savethemoney.implementation.AccountBalanceImpl;
@@ -8,21 +10,28 @@ import it.savethemoney.implementation.CategoryImpl;
 import it.savethemoney.implementation.ExpenseImpl;
 import it.savethemoney.implementation.ObjectivesImpl;
 import it.savethemoney.implementation.PresentElementException;
+import it.savethemoney.implementation.ServicesImpl;
 import it.savethemoney.model.AccountBalance;
 import it.savethemoney.model.Category;
 import it.savethemoney.model.Expense;
 import it.savethemoney.model.Objectives;
+import it.savethemoney.model.Services;
+import it.savethemoney.model.Transactions;
 
 public class BankAccountImpl implements BankAccount {
 
 	private Set<Objectives> objectivesSet;
 	private Set<Category> categorySet;
+	private List<Transactions> transactionList;
+	private Services paymentServices;
 	private AccountBalance accountBalance;
 	
 	public BankAccountImpl(double balance) {
-		this.objectivesSet 	= new LinkedHashSet<>();
-		this.categorySet 	= new LinkedHashSet<>();
-		this.accountBalance = new AccountBalanceImpl(balance);
+		this.objectivesSet 		= new LinkedHashSet<>();
+		this.categorySet 		= new LinkedHashSet<>();
+		this.transactionList 	= new ArrayList<>();
+		this.accountBalance 	= new AccountBalanceImpl(balance);
+		this.paymentServices 	= new ServicesImpl(this.accountBalance);
 	}
 	
 	@Override

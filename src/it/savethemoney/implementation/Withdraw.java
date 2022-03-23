@@ -7,7 +7,7 @@ public class Withdraw extends AbstractPayments{
 
 	private final static double WITHDRAW_FEE = 0.20;
 	
-	public Withdraw(AccountBalance accountBalance, double fee) {
+	public Withdraw(AccountBalance accountBalance) {
 		super(accountBalance, WITHDRAW_FEE);
 	}
 

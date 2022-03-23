@@ -15,6 +15,7 @@ public class BankAccountFrame extends JFrame{
 
 	private JPanel labelPanel;
 	private JPanel buttonPanel;
+	private JPanel transactionPanel;
 	
 	public BankAccountFrame(String name, String namePerson, double totalBalance) {
 		super(name);
@@ -27,9 +28,11 @@ public class BankAccountFrame extends JFrame{
 		
 		this.labelPanel 	= new BankAccountLabelPanel(namePerson, totalBalance);
 		this.buttonPanel 	= new BankAccountButtonPanel();
+		this.transactionPanel = new BankAccountTransactionsPanel("TRANSAZIONI");
 		
 		this.add(labelPanel, BorderLayout.PAGE_START);
 		this.add(buttonPanel, BorderLayout.CENTER);
+		this.add(transactionPanel, BorderLayout.PAGE_END);
 		
 		setVisible(true);
 	}

@@ -18,4 +18,5 @@ public class AccountBalanceImpl implements AccountBalance {
 	public void addBalance(double amount) {
 		this.balance += amount;
 	}
+
 }
