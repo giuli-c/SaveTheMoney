@@ -7,7 +7,7 @@ import it.savethemoney.model.Objectives;
 
 public interface BankAccount {
 	
-	void newObjective(String name, int amount) throws PresentElementException; //genera eccezione
+	void newObjective(String name, int amount) throws PresentElementException; //genera eccezionee
 	
 	/**
 	 * 
