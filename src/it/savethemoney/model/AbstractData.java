@@ -15,4 +15,8 @@ public abstract class AbstractData {
 	public void modifyData(String newName) {
 		this.name = newName;
 	}
+
+	public void setName(String nameData) {
+		this.name = nameData;
+	}
 }

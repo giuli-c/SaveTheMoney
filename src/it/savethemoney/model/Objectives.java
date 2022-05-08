@@ -15,8 +15,8 @@ public interface Objectives {
 	void withdraw(double amount) throws IllegalArgumentException; //genera eccezione
 	
 	
-	double getGoalAmount();
+	Double getGoalAmount();
 	
-	double getPaidAmount();
+	Double getPaidAmount();
 	
 }

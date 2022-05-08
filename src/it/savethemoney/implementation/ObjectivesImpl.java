@@ -11,12 +11,13 @@ public class ObjectivesImpl extends AbstractData implements Objectives {
 	
 	private Services paymentServices;
 	private AccountBalance objectiveAccount;
-	private double goalAmount;					// importo da raggiungere
+	private Double goalAmount;					// importo da raggiungere
+	private Double paidAmount;
 	
-	public ObjectivesImpl(final String nameData, final double amount) {
+	public ObjectivesImpl(final String nameData, final Double amount) {
 		super(nameData);
 		this.goalAmount 	  = amount;
-		this.objectiveAccount = new AccountBalanceImpl(0);
+		this.objectiveAccount = new AccountBalanceImpl(" ", 0.0);
 		this.paymentServices  = new ServicesImpl(this.objectiveAccount);
 	}
 
@@ -34,12 +35,12 @@ public class ObjectivesImpl extends AbstractData implements Objectives {
 	}
 
 	@Override
-	public double getGoalAmount() {
+	public Double getGoalAmount() {
 		return this.goalAmount;
 	}
 
 	@Override
-	public double getPaidAmount() {
+	public Double getPaidAmount() {
 		return this.objectiveAccount.getBalance();
 	}
 

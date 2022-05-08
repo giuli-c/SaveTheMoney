@@ -2,7 +2,7 @@ package it.savethemoney.model;
 
 public interface AccountBalance {
 	
-	double getBalance();
+	Double getBalance();
 	
-	void addBalance(double amount);
+	Double addBalance(double amount);
 }

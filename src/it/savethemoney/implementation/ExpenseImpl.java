@@ -6,12 +6,12 @@ import it.savethemoney.model.Expense;
 public class ExpenseImpl extends AbstractData implements Expense {
 
 	private String date;
-	private double quantity;	
+	private double quantity;
 	
 	public ExpenseImpl(final String nameData, final String date, final double quantity) {
 		super(nameData);
 		this.date 		= date;
-		this.quantity 	= quantity;
+		this.quantity 	= quantity;						//quantity = importo della spesa.
 	}
 
 	@Override

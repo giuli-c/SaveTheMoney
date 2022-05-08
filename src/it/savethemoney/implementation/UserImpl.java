@@ -9,9 +9,9 @@ public class UserImpl implements User{
 	private String name;
 	private BankAccount account;
 	
-	public UserImpl(String userName, double accountBalance) {
+	public UserImpl(String userName, Double accountBalance) {
 		this.name = userName;
-		this.account = new BankAccountImpl(accountBalance);
+		this.account = new BankAccountImpl(userName, accountBalance);
 	}
 
 	public String getName() {

@@ -1,22 +1,24 @@
 package it.savethemoney.implementation;
 
+import it.savethemoney.model.AbstractData;
 import it.savethemoney.model.AccountBalance;
 
-public class AccountBalanceImpl implements AccountBalance {
+public class AccountBalanceImpl extends AbstractData implements AccountBalance {
 
-	private double balance;
+	private Double balance;
 	
-	public AccountBalanceImpl(double balanceValue) {
-		
+	public AccountBalanceImpl(String name, Double balanceValue) {
+		super(name);
 		this.balance = balanceValue;
 	}
 	
-	public double getBalance() {
+	@Override
+	public Double getBalance() {
 		return balance;
 	}
 	
-	public void addBalance(double amount) {
-		this.balance += amount;
+	@Override
+	public Double addBalance(double amount) {
+		return this.balance += amount;
 	}
-
 }
