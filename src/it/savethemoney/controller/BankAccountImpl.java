@@ -111,7 +111,6 @@ public class BankAccountImpl implements BankAccount {
 
 	@Override
 	public Set<ObjectivesImpl> getObjectiveSet() {
-		return this.objectivesSet;
-				
+		return this.objectivesSet;				
 	}
 }

@@ -117,6 +117,16 @@ import it.savethemoney.controller.BankAccount;
 			objectiveDataPanel.add(nameObjective);
 			objectiveDataPanel.add(importObjective);
 			
+			
+			/**
+			 * buttonsDataPanel
+			 */
+			JPanel buttonsDataPanel = new JPanel();
+			buttonsDataPanel.setPreferredSize(new Dimension(300, 100));
+			buttonsDataPanel.setLayout(new BorderLayout());
+			buttonsDataPanel.setBorder(BorderFactory.createLoweredBevelBorder());
+			
+			
 			/**
 			 * creazione del bottone per modificare l'obbiettivo creato da inserire dentro NEWOBJECTIVEPANEL
 			 */
@@ -128,8 +138,25 @@ import it.savethemoney.controller.BankAccount;
 				new ModififyObjectiveView(this, controller, name, amount);
 			});
 			
+			/**
+			 * definizione della funzione del bottone remove
+			 */
+			JButton removeButton = new JButton("Remove");
+			removeButton.setPreferredSize(new Dimension(100, 50));
+			removeButton.setFont(new Font("Cambria", Font.BOLD, 18)); 
+			removeButton.addActionListener(event -> {
+				this.setVisible(false);
+				this.dispose();
+				this.editRemoveObjective(name);
+				//this.controller.removeObjective(this.editRemoveObjective(name));
+				//System.out.println(this.controller.getObjectiveSet().size());
+			});
+			
+			buttonsDataPanel.add(modifyObjectiveButton, BorderLayout.PAGE_START);
+			buttonsDataPanel.add(removeButton, BorderLayout.CENTER);
+			
 			newObjectivePanel.add(objectiveDataPanel);
-			newObjectivePanel.add(modifyObjectiveButton);
+			newObjectivePanel.add(buttonsDataPanel);
 			
 			return newObjectivePanel;
 		}
@@ -196,13 +223,12 @@ import it.savethemoney.controller.BankAccount;
 		/**
 		 * metodo per eliminare gli obbiettivi
 		 */
-		@SuppressWarnings("unlikely-arg-type")
 		public /*ObjectivesImpl*/void editRemoveObjective(String nameObjective) {
 			
 			this.setVisible(true);
 					
 			
-			System.out.println(Arrays.asList((this.objectiveArea).getComponents()).get(0)
+			Arrays.asList((this.objectiveArea).getComponents()).get(0)
 					.contains((Point) this.controller.getObjectiveSet().stream().filter(o -> o.getName().equals(nameObjective))));
 			
 			

@@ -9,13 +9,11 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import it.savethemoney.controller.BankAccount;
-import it.savethemoney.controller.BankAccountImpl;
 import it.savethemoney.implementation.PresentElementException;
 
 public class NewObjectiveView extends JFrame{
@@ -28,7 +26,6 @@ public class NewObjectiveView extends JFrame{
 	private final String title = "NEW OBJECTIVE";
 	private BankAccount controller;
 	private SavingPlainView savingPlainView;
-	private DepositView depositView;
 	private JPanel principalPanel;
 	private JTextArea userObjectiveName;
 	private JTextArea userGoalAmount;

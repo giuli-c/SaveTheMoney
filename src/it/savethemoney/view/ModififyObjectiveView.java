@@ -201,7 +201,7 @@ public class ModififyObjectiveView extends JFrame{
 		
 		/**
 		 * definizione della funzione del bottone remove
-		 */
+		 
 		JButton removeButton = new JButton("Remove");
 		removeButton.setPreferredSize(new Dimension(100, 50));
 		removeButton.setFont(new Font("Cambria", Font.BOLD, 18)); 
@@ -209,14 +209,14 @@ public class ModififyObjectiveView extends JFrame{
 			this.setVisible(false);
 			this.dispose();
 			this.savingPlainView.editRemoveObjective(objectiveName);
-			//this.controller.removeObjective(this.savingPlainView.editRemoveObjective(objectiveName));
+			this.controller.removeObjective(this.savingPlainView.editRemoveObjective(objectiveName));
 			//System.out.println(this.controller.getObjectiveSet().size());
-		});
+		});*/
 		
 		buttonsPanel.add(backButton, BorderLayout.LINE_START);
 		buttonsPanel.add(modifyNameButton, BorderLayout.CENTER);
-		buttonsPanel.add(modifyGoalAmountButton, BorderLayout.CENTER);
-		buttonsPanel.add(removeButton, BorderLayout.LINE_END);
+		buttonsPanel.add(modifyGoalAmountButton, BorderLayout.LINE_END);
+		//buttonsPanel.add(removeButton, BorderLayout.LINE_END);
 		
 		return buttonsPanel;
 	}
