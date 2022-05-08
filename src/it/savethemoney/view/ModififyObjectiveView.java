@@ -3,7 +3,6 @@ package it.savethemoney.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -17,7 +16,12 @@ import it.savethemoney.controller.BankAccount;
 import it.savethemoney.implementation.ObjectivesImpl;
 
 public class ModififyObjectiveView extends JFrame{
-
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private final String title = "MODIFY OBJECTIVE";
 	private BankAccount controller;
 	private SavingPlainView savingPlainView;
@@ -171,10 +175,11 @@ public class ModififyObjectiveView extends JFrame{
 			this.savingPlainView.setVisible(true);
 		});
 		
+		/*
 		/////////////////////////////////////////////////////////////////////////////
 		/**
 		 * definizione della funzione modifica nome
-		 */
+		 
 		JButton modifyNameButton = new GenericButton("Name");
 		modifyNameButton.addActionListener(event -> {
 			this.dispose();
@@ -188,7 +193,7 @@ public class ModififyObjectiveView extends JFrame{
 		/////////////////////////////////////////////////////////////////////////////
 		/**
 		 * definizione della funzione del bottone back
-		 */
+		 
 		JButton modifyGoalAmountButton = new GenericButton("GoalAmount");
 		modifyGoalAmountButton.addActionListener(event -> {
 			this.dispose();
@@ -198,25 +203,11 @@ public class ModififyObjectiveView extends JFrame{
 			.findFirst()
 			.get().modifyData(objectiveName, objectiveAmount);
 		});
-		
-		/**
-		 * definizione della funzione del bottone remove
-		 
-		JButton removeButton = new JButton("Remove");
-		removeButton.setPreferredSize(new Dimension(100, 50));
-		removeButton.setFont(new Font("Cambria", Font.BOLD, 18)); 
-		removeButton.addActionListener(event -> {
-			this.setVisible(false);
-			this.dispose();
-			this.savingPlainView.editRemoveObjective(objectiveName);
-			this.controller.removeObjective(this.savingPlainView.editRemoveObjective(objectiveName));
-			//System.out.println(this.controller.getObjectiveSet().size());
-		});*/
+		*/
 		
 		buttonsPanel.add(backButton, BorderLayout.LINE_START);
-		buttonsPanel.add(modifyNameButton, BorderLayout.CENTER);
-		buttonsPanel.add(modifyGoalAmountButton, BorderLayout.LINE_END);
-		//buttonsPanel.add(removeButton, BorderLayout.LINE_END);
+		//buttonsPanel.add(modifyNameButton, BorderLayout.CENTER);
+		//buttonsPanel.add(modifyGoalAmountButton, BorderLayout.LINE_END);
 		
 		return buttonsPanel;
 	}

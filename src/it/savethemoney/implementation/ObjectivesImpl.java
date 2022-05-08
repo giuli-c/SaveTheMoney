@@ -12,7 +12,6 @@ public class ObjectivesImpl extends AbstractData implements Objectives {
 	private Services paymentServices;
 	private AccountBalance objectiveAccount;
 	private Double goalAmount;					// importo da raggiungere
-	private Double paidAmount;
 	
 	public ObjectivesImpl(final String nameData, final Double amount) {
 		super(nameData);

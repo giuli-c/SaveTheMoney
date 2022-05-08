@@ -1,6 +1,5 @@
 package it.savethemoney.controller;
 
-import java.util.List;
 import java.util.Set;
 
 import it.savethemoney.implementation.ObjectivesImpl;

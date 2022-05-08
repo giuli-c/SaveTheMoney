@@ -3,8 +3,6 @@ package it.savethemoney.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Point;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -119,12 +117,12 @@ import it.savethemoney.controller.BankAccount;
 			
 			
 			/**
-			 * buttonsDataPanel
+			 * creazione della sezione dei BOTTONI dei dati relativo all'obbiettivo creato
 			 */
 			JPanel buttonsDataPanel = new JPanel();
-			buttonsDataPanel.setPreferredSize(new Dimension(300, 100));
-			buttonsDataPanel.setLayout(new BorderLayout());
-			buttonsDataPanel.setBorder(BorderFactory.createLoweredBevelBorder());
+			buttonsDataPanel.setPreferredSize(new Dimension(150, 100));
+			buttonsDataPanel.setLayout(new BoxLayout(buttonsDataPanel, BoxLayout.PAGE_AXIS));
+			buttonsDataPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 			
 			
 			/**
@@ -140,21 +138,28 @@ import it.savethemoney.controller.BankAccount;
 			
 			/**
 			 * definizione della funzione del bottone remove
+			 * 
 			 */
 			JButton removeButton = new JButton("Remove");
-			removeButton.setPreferredSize(new Dimension(100, 50));
-			removeButton.setFont(new Font("Cambria", Font.BOLD, 18)); 
+			removeButton.setPreferredSize(new Dimension(80, 30));
 			removeButton.addActionListener(event -> {
-				this.setVisible(false);
+				this.setVisible(true);
 				this.dispose();
-				this.editRemoveObjective(name);
-				//this.controller.removeObjective(this.editRemoveObjective(name));
-				//System.out.println(this.controller.getObjectiveSet().size());
+				var childToRemove = removeButton.getParent().getParent();
+				childToRemove.getParent().remove(childToRemove);
+				this.setVisible(true);
+				this.controller.removeObjective(this.controller.getObjectiveSet().stream().filter(o -> o.getName().equals(name)).findFirst().get());
 			});
 			
-			buttonsDataPanel.add(modifyObjectiveButton, BorderLayout.PAGE_START);
-			buttonsDataPanel.add(removeButton, BorderLayout.CENTER);
+			/**
+			 * inserimento dei bottoni relativo ai dati
+			 */
+			buttonsDataPanel.add(modifyObjectiveButton);
+			buttonsDataPanel.add(removeButton);
 			
+			/**
+			 * aggiungo i vari pannelli al pannello generale per la creazione di un nuovo obbiettivo
+			 */
 			newObjectivePanel.add(objectiveDataPanel);
 			newObjectivePanel.add(buttonsDataPanel);
 			
@@ -178,7 +183,7 @@ import it.savethemoney.controller.BankAccount;
 			/**
 			 * definizione del bottone per aggiungere obbiettivi
 			 */
-			JButton addObjectives = new JButton("ADD OBJECTIVE");
+			JButton addObjectives = new JButton("Add Objective");
 			addObjectives.setPreferredSize(new Dimension(150, 50));
 			addObjectives.addActionListener(event -> {
 				this.setVisible(false);
@@ -219,42 +224,6 @@ import it.savethemoney.controller.BankAccount;
 			
 			this.setVisible(true);
 		}
-		
-		/**
-		 * metodo per eliminare gli obbiettivi
-		 */
-		public /*ObjectivesImpl*/void editRemoveObjective(String nameObjective) {
-			
-			this.setVisible(true);
-					
-			
-			Arrays.asList((this.objectiveArea).getComponents()).get(0)
-					.contains((Point) this.controller.getObjectiveSet().stream().filter(o -> o.getName().equals(nameObjective))));
-			
-			
-			
-			
-		/*	filter(c -> (JTextField)	equals("Name: ")).findFirst().get();
-			System.out.println(text);
-			
-			ObjectivesImpl objective = controller.getObjectiveSet().stream()
-										.filter(o -> o.getName().equals(nameObjective))
-										.findFirst()
-										.get();
-			
-	
-					
-					get(createNewObjective(controller.getObjectiveSet().stream()
-					 .filter(o -> o.getName().equals(nameObjective))
-					 .findFirst()
-					 .get()
-					 .getName(),
-					 amount, 
-					 null));*/
-					
-					
-		
-		}
-	}
+}
 				
 				
