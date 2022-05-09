@@ -28,23 +28,6 @@ public interface BankAccount {
 	 */
 	void removeObjective(Objectives o) throws NullPointerException; //genera eccezione
 	
-	/**
-	 * Aggiunge una nuova categoria al set delle categorie già presenti 
-	 * 
-	 * @param name = nome della nuova categoria
-	 * @throws PresentElementException = restituisce PresentElementException se l'elemento da aggiungere al set è già presnete al suo interno
-	 */
-	void newCategory(String name) throws PresentElementException; //genera eccezioni
-	
-	/**
-	 * rimuove la categoria dal set
-	 * 
-	 * @param c = categoria dda rimuovere
-	 * @throws NullPointerException = restituisce NullPointEcpetion se l'elemento da rimuovere non è presente nel set
-	 */
-	void removeCategory(Category c) throws NullPointerException; //genera eccezioni
-	
-	
 	void addExpense(String name, String date, double amount, Category c);	//genera eccezioni
 	
 	/**
@@ -52,15 +35,6 @@ public interface BankAccount {
 	 * @param e = expense to remove
 	 */
 	void removeExpense(Category c, Expense e);	//genera eccezioni
-	
-	
-	void viewObjectives();
-	
-	void viewExpenses();
-	
-	void viewCategories();
-	
-	void viewTransaction();
 	
 	String getName();
 	

@@ -22,6 +22,7 @@ public class BankAccountView extends JFrame{
 	private final BankAccount controller;
 	private JPanel bankAccountPanel;
 	private JLabel balanceLabel;
+	private JComboBox<Object> expenseCombo;
 	
 	/**
 	 * Finestra del proprio BankAccount
@@ -123,7 +124,7 @@ public class BankAccountView extends JFrame{
 			
 			this.setVisible(false);
 			this.dispose();
-			new PaymentsServiceView(this);
+			new PaymentsServiceView(this, expenseCombo);
 		});			
 		
 		JButton savingButton 	= new ActivityButton("<html>SAVING<br /> PLAIN<html>");
@@ -163,7 +164,7 @@ public class BankAccountView extends JFrame{
 		 * Creazione del menu a tendina
 		 * 
 		 */
-		JComboBox<Object> expenseCombo = new JComboBox<Object>();
+		this.expenseCombo = new JComboBox<Object>();
 		
 		transactionPanel.add(expenseCombo, BorderLayout.CENTER);
 		

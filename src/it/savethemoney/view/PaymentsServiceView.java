@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,15 +24,15 @@ public class PaymentsServiceView extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public PaymentsServiceView(BankAccountView bankAccount) {
+	public PaymentsServiceView(BankAccountView bankAccount, JComboBox<Object> expenseCombo) {
 		this.bankAccountView = bankAccount;
-		this.Init();
+		this.Init(expenseCombo);
 	}
 	
 	/**
 	 * Inizializzazione della finestra
 	 */
-	private void Init() {
+	private void Init(JComboBox<Object> expenseCombo) {
 		this.setTitle(title);
 		this.setPreferredSize(new Dimension(300, 450));
 		this.setResizable(true);
@@ -39,7 +40,7 @@ public class PaymentsServiceView extends JFrame{
 		
 		paymentsPanel = new JPanel();	
 		paymentsPanel.setLayout(new BorderLayout());		
-		paymentsPanel.add(createButtonsPanel());
+		paymentsPanel.add(createButtonsPanel(expenseCombo));
 		
 		this.getContentPane().add(paymentsPanel);
 		this.pack();
@@ -52,7 +53,7 @@ public class PaymentsServiceView extends JFrame{
 	 * 
 	 * @return il pannello creato
 	 */
-	private JPanel createButtonsPanel() {
+	private JPanel createButtonsPanel(JComboBox<Object> expenseCombo) {
 		final JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new BorderLayout());
 		buttonsPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20)); 
@@ -70,7 +71,7 @@ public class PaymentsServiceView extends JFrame{
 			
 			this.setVisible(false);
 			this.dispose();
-			new CreditTransferView(this);
+			new CreditTransferView(this, bankAccountView, controller, expenseCombo);
 		});			
 		
 		JButton paymentsButton 	= new JButton("Payments");

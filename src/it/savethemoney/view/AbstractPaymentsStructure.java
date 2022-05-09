@@ -6,12 +6,13 @@ import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public abstract class AbstractPaymentsStructur extends JFrame{
+public abstract class AbstractPaymentsStructure extends JFrame{
 	
 	/**
 	 * Set generic structur
@@ -19,17 +20,18 @@ public abstract class AbstractPaymentsStructur extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel principalPanel;
+	private JTextArea userData;
 	private JTextArea userName;
 	private JTextArea userBalance;
 	
-	public AbstractPaymentsStructur() {
+	public AbstractPaymentsStructure() {
 		
 		this.setVisible(true);
 		principalPanel = new JPanel();	
 		principalPanel.setLayout(new BorderLayout());	
 		
 		principalPanel.add(createPrincipalPanel(), BorderLayout.PAGE_START);
-		principalPanel.add(createButtonsPanel(userName, userBalance), BorderLayout.PAGE_END);
+		principalPanel.add(createButtonsPanel(userData, userName, userBalance), BorderLayout.PAGE_END);
 		
 		this.getContentPane().add(principalPanel);
 		this.pack();
@@ -39,7 +41,7 @@ public abstract class AbstractPaymentsStructur extends JFrame{
 		
 		final JPanel userDataPanel = new JPanel();
 		userDataPanel.setLayout(new GridLayout());
-		userDataPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20)); 
+		userDataPanel.setBorder(BorderFactory.createEmptyBorder(20,50,20,20)); 
 		
 		/**
 		 * aggiungo i vari pannelli al pannello principale
@@ -88,19 +90,26 @@ public abstract class AbstractPaymentsStructur extends JFrame{
 		 */
 		userTextPanel.add(dataDate, BorderLayout.PAGE_START);
 		userTextPanel.add(dataName, BorderLayout.CENTER);
-		userTextPanel.add(dataBalance, BorderLayout.CENTER);
+		userTextPanel.add(dataBalance, BorderLayout.PAGE_END);
 		
 		return userTextPanel;
 	}	
 	
-	private JPanel creatTextAreaPanel() {
+	protected JPanel creatTextAreaPanel() {
 		/**
 		 * Creazione della sezione risposte dell'utente
 		 * 
 		 */
 		JPanel userTextAreaPanel = new JPanel();
 		userTextAreaPanel.setLayout(new BorderLayout());
-				
+			
+		/** 
+		 * creazione della sezione data
+		 */
+		userData 	= new JTextArea("\n  \n");
+		userData.setPreferredSize(new Dimension(150, 40));
+		userData.setFont(new Font("Cambria", Font.ITALIC, 15));
+		
 		/** 
 		 * creazione della sezione nome
 		 */
@@ -118,11 +127,12 @@ public abstract class AbstractPaymentsStructur extends JFrame{
 		/**
 		 * agggiungo le domande al pannello
 		 */
-		userTextAreaPanel.add(userName, BorderLayout.PAGE_START);
-		userTextAreaPanel.add(userBalance, BorderLayout.CENTER);
+		userTextAreaPanel.add(userData, BorderLayout.PAGE_START); 
+		userTextAreaPanel.add(userName, BorderLayout.CENTER);
+		userTextAreaPanel.add(userBalance, BorderLayout.PAGE_END);
 		
 		return userTextAreaPanel;
 	}
 	
-	public abstract JPanel createButtonsPanel(JTextArea userName, JTextArea userBalance);
+	public abstract JPanel createButtonsPanel(JTextArea userData, JTextArea userName, JTextArea userBalance);
 }

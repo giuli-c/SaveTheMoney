@@ -3,6 +3,7 @@ package it.savethemoney.view;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public abstract class AbstractGenericButton extends JButton{
@@ -17,6 +18,6 @@ public abstract class AbstractGenericButton extends JButton{
 		
 		setFont(new Font("Cambria", Font.BOLD, 18)); 
 		setPreferredSize(new Dimension(100, 50));
-		setBounds(150, 50, 80, 30);
+		setBounds(150, 80, 80, 30);		
 	}
 }

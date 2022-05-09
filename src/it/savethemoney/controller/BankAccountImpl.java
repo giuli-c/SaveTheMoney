@@ -46,18 +46,6 @@ public class BankAccountImpl implements BankAccount {
 			throw new NullPointerException("ATTENZIONE! L'obbiettivo che vuoi rimuovere non esiste!");
 	}
 
-	@Override
-	public void newCategory(String name) throws PresentElementException {
-		if(!this.categorySet.add(new CategoryImpl(name)))
-				throw new PresentElementException("ATTENZIONE! La categoria che vuoi inserire è già presente!");
-	}
-
-	@Override
-	public void removeCategory(Category c) throws NullPointerException {
-		if(!this.categorySet.remove(c))
-			throw new NullPointerException("ATTENZIONE! La categoria che vuoi rimuovere non esiste!");
-	}
-
 	private Category findCategory(Category c) {
 		return this.categorySet.stream()
 								.filter(cat -> cat.equals(c))
@@ -73,29 +61,6 @@ public class BankAccountImpl implements BankAccount {
 	@Override
 	public void removeExpense(Category c, Expense e) {
 		this.findCategory(c).removeExpense(e);
-	}
-
-	@Override
-	public void viewObjectives() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void viewExpenses() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void viewCategories() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void viewTransaction() {
-		// TODO Auto-generated method stu		
 	}
 	
 	@Override

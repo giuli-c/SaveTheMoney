@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 import it.savethemoney.controller.BankAccount;
 import it.savethemoney.controller.BankAccountImpl;
 
-public class WithdrawView extends AbstractPaymentsStructur {
+public class WithdrawView extends AbstractPaymentsStructure {
 
 	private final String title = "CREDIT TRANSFER";
 	private BankAccount controller;

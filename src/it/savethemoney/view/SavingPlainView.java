@@ -37,6 +37,13 @@ import it.savethemoney.controller.BankAccount;
 			this.Init();
 	    }
 	 
+	    /**
+	     * Metodo statico per utilizzo del Singleton Pattern. L'interfaccia SavingPlainView viene creata esclusivamente se non è già stata creata
+	     * In questo modo riusciamo a salvare i dati precedentemente inseriti all'interno dell'interfaccia (no sovrascrittura)
+	     * @param bankAccount
+	     * @param controller
+	     * @return
+	     */
 	    public static SavingPlainView getInstance(BankAccountView bankAccount, BankAccount controller) {
 	        if (instance == null) {
 	            instance = new SavingPlainView(bankAccount, controller);
@@ -57,22 +64,20 @@ import it.savethemoney.controller.BankAccount;
 			this.setLocationRelativeTo(null);				// dove si apre l'interfaccia (al centro)
 			
 			principalPanel = new JPanel();	
+			principalPanel.setPreferredSize(new Dimension(250, 200));
 			principalPanel.setLayout(new BorderLayout());	
 			
 			principalPanel.add(createScrollPane(), BorderLayout.CENTER);
 			principalPanel.add(createButtonsPanel(), BorderLayout.PAGE_END);
 			
-			createObjectiveArea();
+			this.objectiveArea = new JPanel();
+			objectiveArea.setPreferredSize(new Dimension(200, 150));
+			this.objectiveArea.setLayout(new BoxLayout(this.objectiveArea, BoxLayout.PAGE_AXIS));
 			
 			this.getContentPane().add(principalPanel);
 			this.pack();
 			this.setLocationRelativeTo(null);				// dove si apre l'interfaccia (al centro)
 			this.setVisible(true);
-		}
-
-		public void createObjectiveArea() {
-			this.objectiveArea = new JPanel();
-			this.objectiveArea.setLayout(new BoxLayout(this.objectiveArea, BoxLayout.PAGE_AXIS));
 		}
 			
 		private JPanel createNewObjective(String name, Double amount, Double paidAmountUser) {			
@@ -89,6 +94,7 @@ import it.savethemoney.controller.BankAccount;
 			 * creazione della sezione dei dati relativo all'obbiettivo creato
 			 */				
 			JPanel objectiveDataPanel = new JPanel();
+			objectiveDataPanel.setPreferredSize(new Dimension(200, 100));
 			objectiveDataPanel.setLayout(new BoxLayout(objectiveDataPanel, BoxLayout.PAGE_AXIS));
 			objectiveDataPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20)); 
 			
@@ -138,16 +144,23 @@ import it.savethemoney.controller.BankAccount;
 			
 			/**
 			 * definizione della funzione del bottone remove
-			 * 
+			 * Per permettere la rimozione dall'interfaccia dell'elemento in questione è stata definita una nuova variabile figlio da eliminare
+			 * necessaria per poter risalire al componente interno a me necessario
+			 * removeButton.getParent() 			= buttonsDataPanel;
+			 * removeButton.getParent().getParent()	= newObjectivePanel (buttonsDataPanel dentro newObjectivePanel)
+			 * childToRemove.getParent()			= objectiveArea (newObjectivePanel dentro objectiveArea) ovvero l'elemento da eliminare
+			 * Dopo di che è stato rimosso l'obbiettivo dal set degli obbiettivi
 			 */
 			JButton removeButton = new JButton("Remove");
 			removeButton.setPreferredSize(new Dimension(80, 30));
 			removeButton.addActionListener(event -> {
 				this.setVisible(true);
 				this.dispose();
+				
 				var childToRemove = removeButton.getParent().getParent();
 				childToRemove.getParent().remove(childToRemove);
 				this.setVisible(true);
+				
 				this.controller.removeObjective(this.controller.getObjectiveSet().stream().filter(o -> o.getName().equals(name)).findFirst().get());
 			});
 			
@@ -166,6 +179,10 @@ import it.savethemoney.controller.BankAccount;
 			return newObjectivePanel;
 		}
 		
+		/**
+		 * 
+		 * @return scrollPane, ovvero la sezione di scorrimento
+		 */
 		private JScrollPane createScrollPane() {
 			
 			this.scrollPane = new JScrollPane();
